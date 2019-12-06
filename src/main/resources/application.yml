@@ -1,0 +1,21 @@
+server:
+  port: 9090
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+spring:
+  datasource:
+    username: root
+    password: 1111
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=15000&allowMultiQueries=true&useSSL=false
+  redis:
+    host: 192.168.27.128
+    port: 6379
+
+logging:
+  level:
+    com.tx.tx_11_29.mapper: debug
