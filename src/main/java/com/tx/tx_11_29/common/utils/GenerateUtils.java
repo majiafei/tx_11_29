@@ -329,6 +329,7 @@ public class GenerateUtils {
             e.printStackTrace();
         } finally {
             if (rs != null) {
+
                 try {
                     rs.close();
                     closeConnection(conn);
