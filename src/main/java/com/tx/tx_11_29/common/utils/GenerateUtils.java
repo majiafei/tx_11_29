@@ -346,7 +346,7 @@ public class GenerateUtils {
         System.out.println(tableNames);
 
         for (String tableName : tableNames) {
-            if (tableName.equals("shopee_review_log")) {
+            if (tableName.equals("adv_off_whitelist")) {
                 getColumnComments(tableName);
                 StringBuilder sb = new StringBuilder();
                 String entityName = firstLetterConverUppercase(underlineToHump(tableName));
@@ -382,7 +382,7 @@ public class GenerateUtils {
                 daoStr.append("\n}");
 
                 StringBuilder daoImplStr = new StringBuilder();
-                String daoImplName = daoName + "impl";
+                String daoImplName = daoName + "Impl";
                 daoImplStr.append("package " + daoRealtive.replaceAll("/", ".") + ";");
                 daoImplStr.append("\n");
                 daoImplStr.append("public class " + daoImplName + " extends BaseDaoImpl<" + entityName + "> " +
