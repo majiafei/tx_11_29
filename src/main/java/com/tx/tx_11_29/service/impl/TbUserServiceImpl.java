@@ -39,5 +39,6 @@ public class TbUserServiceImpl extends ServiceImpl<TbUserMapper, TbUser> impleme
         newUser.setUserName("remark");
         this.save(newUser);
 
+
     }
 }
