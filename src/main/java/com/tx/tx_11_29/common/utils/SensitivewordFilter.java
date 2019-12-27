@@ -239,7 +239,7 @@ public class SensitivewordFilter {
 		System.out.println("语句中包含敏感词的个数为：" + set.size() + "。包含：" + set);
 		System.out.println("总共消耗时间为：" + (endTime - beginTime));*/
 
-		String str = "hmy apple";
+		String str = "my apple";
 		Set<String> sensitiveWord = filter.getSensitiveWord(str, 2);
 		System.out.println(sensitiveWord);
 	}
