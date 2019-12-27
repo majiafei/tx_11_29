@@ -17,6 +17,11 @@ public class TestController {
     public String hello() {
         return "hello";
     }
+
+    @RequestMapping("/hello2")
+    public String hello2() {
+        return "element-ui";
+    }
 //    @RequestMapping("/download")
 /*    public void download(@RequestParam(value = "ids") String ids, HttpServletResponse response) {
         OutputStream outputStream = null;
