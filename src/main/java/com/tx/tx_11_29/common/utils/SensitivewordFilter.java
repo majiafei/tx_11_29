@@ -1,6 +1,8 @@
 package com.tx.tx_11_29.common.utils;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @Description: 敏感词过滤
@@ -51,23 +53,49 @@ public class SensitivewordFilter {
 	 * @return
 	 * @version 1.0
 	 */
-	public Set<String> getSensitiveWord(String txt , int matchType){
+	public Set<String> getEnSensitiveWord(String txt , int matchType){
 		Set<String> sensitiveWordList = new HashSet<String>();
 
 		for(int i = 0 ; i < txt.length() ; i++){
 			int length = CheckSensitiveWord(txt, i, matchType);    //判断是否包含敏感字符
 			if(length > 0){    //存在,加入list中
-				if (i + length == txt.length() || txt.charAt(i + length) == 32) {
+				if (i + length == txt.length() || txt.charAt(i + length) == 32 || isSign(txt.charAt(i + length))) {
 					sensitiveWordList.add(txt.substring(i, i+length));
 					i = i + length - 1;    //减1的原因，是因为for会自增
 				}
 			} else {
+				if (isSign(txt.charAt(i))) {
+					continue;
+				}
 				while (true) {
 					i++;
-					if (i >= txt.length() || txt.charAt(i) == 32) {
+					if (i >= txt.length() || txt.charAt(i) == 32 || isSign(txt.charAt(i))) {
 						break;
 					}
 				}
+			}
+		}
+
+		return sensitiveWordList;
+	}
+
+	/**
+	 * 获取文字中的敏感词
+	 * @author chenming
+	 * @date 2014年4月20日 下午5:10:52
+	 * @param txt 文字
+	 * @param matchType 匹配规则&nbsp;1：最小匹配规则，2：最大匹配规则
+	 * @return
+	 * @version 1.0
+	 */
+	public Set<String> getChinaSensitiveWord(String txt , int matchType){
+		Set<String> sensitiveWordList = new HashSet<String>();
+
+		for(int i = 0 ; i < txt.length() ; i++){
+			int length = CheckSensitiveWord(txt, i, matchType);    //判断是否包含敏感字符
+			if(length > 0){    //存在,加入list中
+					sensitiveWordList.add(txt.substring(i, i+length));
+					i = i + length - 1;    //减1的原因，是因为for会自增
 			}
 		}
 
@@ -85,7 +113,7 @@ public class SensitivewordFilter {
 	 */
 	public String replaceSensitiveWord(String txt,int matchType,String replaceChar){
 		String resultTxt = txt;
-		Set<String> set = getSensitiveWord(txt, matchType);     //获取所有的敏感词
+		Set<String> set = getChinaSensitiveWord(txt, matchType);     //获取所有的敏感词
 		Iterator<String> iterator = set.iterator();
 		String word = null;
 		String replaceString = null;
@@ -220,27 +248,35 @@ public class SensitivewordFilter {
 		}
 	}
 
+	public static boolean isSign(char c) {
+		Pattern pattern = Pattern.compile("\\pP");
+		Matcher matcher = pattern.matcher(Character.toString(c));
+
+		return matcher.matches();
+	}
+
 	public static void main(String[] args) {
 		Set<String> set1 = new HashSet<>();
 		set1.add("my apple");
-		set1.add("china");
+		set1.add("‘china");
+		set1.add("感情");
 
 		addSensitiveWordToHashMap(set1);
 
 		SensitivewordFilter filter = new SensitivewordFilter();
 		// System.out.println("敏感词的数量：" + filter.sensitiveWordMap.size());
-/*		String string = "太多的伤感情怀也许只局限于饲养基地 荧幕中的情节，主人公尝试着去用某种方式渐渐的很潇洒地释自杀指南怀那些自己经历的伤感。"
+		String string = "太多的伤感情怀也许只局限于饲养基地 荧幕中的情节，主人公尝试着去用某种方式渐渐的很潇洒地释自杀指南怀那些自己经历的伤感。"
 				+ "然后法轮功 我们的扮演的角色就是跟随着主人公的喜红客联盟 怒哀乐而过于牵强的把自己的情感也附加于银幕情节中，然后感动就流泪，"
 				+ "难过就躺在某一个人的怀里尽情的阐述心扉或者手机卡复制器一个人一杯红酒一部电影在夜三级片 深人静的晚上，关上电话静静的发呆着。";
 		System.out.println("待检测语句字数：" + string.length());
 		long beginTime = System.currentTimeMillis();
-		Set<String> set = filter.getSensitiveWord(string, 1);
+		Set<String> set = filter.getChinaSensitiveWord(string, 1);
 		long endTime = System.currentTimeMillis();
 		System.out.println("语句中包含敏感词的个数为：" + set.size() + "。包含：" + set);
-		System.out.println("总共消耗时间为：" + (endTime - beginTime));*/
+		System.out.println("总共消耗时间为：" + (endTime - beginTime));
 
-		String str = "my apple";
-		Set<String> sensitiveWord = filter.getSensitiveWord(str, 2);
+		String str = "my apple‘china ch8ina";
+		Set<String> sensitiveWord = filter.getEnSensitiveWord(str, 2);
 		System.out.println(sensitiveWord);
 	}
 }
