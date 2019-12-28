@@ -62,6 +62,16 @@ public class SensitivewordFilter {
 				if (i + length == txt.length() || txt.charAt(i + length) == 32 || isSign(txt.charAt(i + length))) {
 					sensitiveWordList.add(txt.substring(i, i+length));
 					i = i + length - 1;    //减1的原因，是因为for会自增
+				} else {
+					if (isSign(txt.charAt(i))) {
+						continue;
+					}
+					while (true) {
+						i++;
+						if (i >= txt.length() || txt.charAt(i) == 32 || isSign(txt.charAt(i))) {
+							break;
+						}
+					}
 				}
 			} else {
 				if (isSign(txt.charAt(i))) {
@@ -258,7 +268,7 @@ public class SensitivewordFilter {
 	public static void main(String[] args) {
 		Set<String> set1 = new HashSet<>();
 		set1.add("my apple");
-		set1.add("‘china");
+		set1.add("china");
 		set1.add("感情");
 
 		addSensitiveWordToHashMap(set1);
@@ -275,7 +285,7 @@ public class SensitivewordFilter {
 		System.out.println("语句中包含敏感词的个数为：" + set.size() + "。包含：" + set);
 		System.out.println("总共消耗时间为：" + (endTime - beginTime));
 
-		String str = "my apple‘china ch8ina";
+		String str = "chinamy,my apple";
 		Set<String> sensitiveWord = filter.getEnSensitiveWord(str, 2);
 		System.out.println(sensitiveWord);
 	}
