@@ -1,0 +1,87 @@
+Classfile /F:/myproject/tx_11_29/target/test-classes/com/tx/tx_11_29/fanxing/FanxingTest.class
+  Last modified 2019-12-28; size 729 bytes
+  MD5 checksum 6a0c6891a0520c6b2c39d46474429796
+  Compiled from "FanxingTest.java"
+public class com.tx.tx_11_29.fanxing.FanxingTest
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #6.#25         // java/lang/Object."<init>":()V
+   #2 = Class              #26            // java/lang/String
+   #3 = String             #27            // xxxxx
+   #4 = Methodref          #28.#29        // com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+   #5 = Class              #30            // com/tx/tx_11_29/fanxing/FanxingTest
+   #6 = Class              #31            // java/lang/Object
+   #7 = Utf8               <init>
+   #8 = Utf8               ()V
+   #9 = Utf8               Code
+  #10 = Utf8               LineNumberTable
+  #11 = Utf8               LocalVariableTable
+  #12 = Utf8               this
+  #13 = Utf8               Lcom/tx/tx_11_29/fanxing/FanxingTest;
+  #14 = Utf8               main
+  #15 = Utf8               ([Ljava/lang/String;)V
+  #16 = Utf8               args
+  #17 = Utf8               [Ljava/lang/String;
+  #18 = Utf8               list
+  #19 = Utf8               Ljava/util/List;
+  #20 = Utf8               LocalVariableTypeTable
+  #21 = Utf8               Ljava/util/List<Ljava/lang/String;>;
+  #22 = Utf8               MethodParameters
+  #23 = Utf8               SourceFile
+  #24 = Utf8               FanxingTest.java
+  #25 = NameAndType        #7:#8          // "<init>":()V
+  #26 = Utf8               java/lang/String
+  #27 = Utf8               xxxxx
+  #28 = Class              #32            // com/google/common/collect/Lists
+  #29 = NameAndType        #33:#34        // newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+  #30 = Utf8               com/tx/tx_11_29/fanxing/FanxingTest
+  #31 = Utf8               java/lang/Object
+  #32 = Utf8               com/google/common/collect/Lists
+  #33 = Utf8               newArrayList
+  #34 = Utf8               ([Ljava/lang/Object;)Ljava/util/ArrayList;
+{
+  public com.tx.tx_11_29.fanxing.FanxingTest();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 8: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/tx/tx_11_29/fanxing/FanxingTest;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=2, args_size=1
+         0: iconst_1
+         1: anewarray     #2                  // class java/lang/String
+         4: dup
+         5: iconst_0
+         6: ldc           #3                  // String xxxxx
+         8: aastore
+         9: invokestatic  #4                  // Method com/google/common/collect/Lists.newArrayList:([Ljava/lang/Object;)Ljava/util/ArrayList;
+        12: astore_1
+        13: return
+      LineNumberTable:
+        line 11: 0
+        line 12: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  args   [Ljava/lang/String;
+           13       1     1  list   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           13       1     1  list   Ljava/util/List<Ljava/lang/String;>;
+    MethodParameters:
+      Name                           Flags
+      args
+}
+SourceFile: "FanxingTest.java"
