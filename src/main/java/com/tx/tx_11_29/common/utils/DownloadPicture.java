@@ -2,7 +2,6 @@ package com.tx.tx_11_29.common.utils;
 
 import org.springframework.util.FileCopyUtils;
 
-import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,7 +43,6 @@ public class DownloadPicture {
             FileOutputStream fileOutputStream = new FileOutputStream(new File("D:1.jpg"));
 
             FileCopyUtils.copy(dataInputStream, fileOutputStream);
-
             dataInputStream.close();
             fileOutputStream.close();
         } catch (Exception e) {
