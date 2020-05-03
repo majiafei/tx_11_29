@@ -1,5 +1,6 @@
 package com.tx.tx_11_29.common.utils;
 
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -345,8 +346,10 @@ public class GenerateUtils {
         List<String> tableNames = getTableNames();
         System.out.println(tableNames);
 
+        tableNames = Lists.newArrayList("product_spu_product_info");
+
         for (String tableName : tableNames) {
-            if (tableName.equals("adv_off_whitelist")) {
+            // if (tableName.equals("combo_sku_inv_item")) {
                 getColumnComments(tableName);
                 StringBuilder sb = new StringBuilder();
                 String entityName = firstLetterConverUppercase(underlineToHump(tableName));
@@ -410,7 +413,7 @@ public class GenerateUtils {
                 generateFile(daoLocation, daoImplName, daoImplStr.toString());
                 generateFile(serviceLocation, serviceName, serviceStr.toString());
                 generateFile(serviceLocation, serviceImplName, serviceImplStr.toString());
-            }
+           // }
         }
     }
 
