@@ -24,4 +24,8 @@ public class TbUser {
 
     private Integer userStatus;
 
+    public static void main(String[] args) {
+        System.out.println("2020-05-04 11:49:34".length());
+    }
+
 }
