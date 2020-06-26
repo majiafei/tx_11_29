@@ -100,7 +100,7 @@ public class ABATest {
     }
 
     public static void main(String[] args) {
-        ThreadPoolExecutor threadPoolExecutor = new ScheduledThreadPoolExecutor(100);
+        ThreadPoolExecutor threadPoolExecutor = new ScheduledThreadPoolExecutor(1);
         ((ScheduledThreadPoolExecutor) threadPoolExecutor).schedule(new Runnable() {
             @Override
             public void run() {
@@ -114,7 +114,7 @@ public class ABATest {
             public void run() {
                 System.out.println("2000ms ===============");
             }
-        }, 2000, TimeUnit.MILLISECONDS);
+        }, 1000, TimeUnit.MILLISECONDS);
     }
 
 
