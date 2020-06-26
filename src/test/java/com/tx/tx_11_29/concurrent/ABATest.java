@@ -9,6 +9,9 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
@@ -95,5 +98,24 @@ public class ABATest {
 
         System.out.println(list);
     }
+
+    public static void main(String[] args) {
+        ThreadPoolExecutor threadPoolExecutor = new ScheduledThreadPoolExecutor(100);
+        ((ScheduledThreadPoolExecutor) threadPoolExecutor).schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("1000ms ===============");
+            }
+        }, 1000, TimeUnit.MILLISECONDS);
+
+
+        ((ScheduledThreadPoolExecutor) threadPoolExecutor).schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("2000ms ===============");
+            }
+        }, 2000, TimeUnit.MILLISECONDS);
+    }
+
 
 }
